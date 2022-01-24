@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 import requestIp from 'request-ip';
@@ -26,7 +27,7 @@ const Home: NextPage<{data: {ip: string, geo: Lookup, ua: string}}> = ({data}) =
           </div>
           <div>
             <span className='font-bold'>Location</span>:&nbsp;
-            <span>{data.geo.city} {data.geo.region} {data.geo.country}</span>
+            <span>{data.geo ? `${data.geo.city} ${data.geo.region} ${data.geo.country}` : ''}</span>
           </div>
           <span className='font-bold'>User Agent</span>:&nbsp;
           <span>{data.ua}</span>
@@ -35,19 +36,25 @@ const Home: NextPage<{data: {ip: string, geo: Lookup, ua: string}}> = ({data}) =
         <h2>APIs</h2>
         <div>
           <div>
-            <a href="/api/ip">IP</a>
+            <Link href="/api/ip">
+              <a>IP</a>
+            </Link>
           </div>
           <div>
-            <a href="/api/geo">Geo</a>
+            <Link href="/api/geo">
+              <a>Geo</a>
+            </Link>
           </div>
           <div>
-            <a href="/api/ua">User Agent</a>
+            <Link href="/api/ua">
+              <a>User Agent</a>
+            </Link>
           </div>
         </div>
       </main>
 
       <footer className={styles.footer}>
-        <a href="https://www.zhang-consulting.com" target="_blank">
+        <a href="https://www.zhang-consulting.com" target="_blank" rel="noreferrer">
           Powered by Zhang Consulting Corp
         </a>
       </footer>
