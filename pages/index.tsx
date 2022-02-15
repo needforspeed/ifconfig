@@ -31,9 +31,6 @@ const Home: NextPage<{data: {ip: string, geo: Lookup, ua: string}}> = ({data}) =
                 <div>
                   :&nbsp;{data.geo.city}, {data.geo.region}, {data.geo.country}&nbsp;
                 </div>
-                <div>
-                  <Image alt={`${data.geo.country} flag`} src={`https://flagcdn.com/96x72/${data.geo.country.toLowerCase()}.png`} width={32} height={32}/>
-                </div>
               </div>
             ) :
             ''
